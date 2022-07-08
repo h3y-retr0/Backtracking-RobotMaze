@@ -11,14 +11,23 @@ def print_maze(maze):
         print(row_print)
     
 
+def solve_maze(maze):
+    if len(maze) <= 1 or len(maze[0]) <= 1:
+        print("Please enter a valid problem")
+        return None
+    else:
+        solution = helper(maze, [], 0, 0)
+        print("The solution is: " + str(solution))
+        print("d -> move down ; r-> move right") 
+
 def helper(maze, sol, pos_row, pos_col):
     num_row = len(maze)
     num_col = len(maze[0])
 
     # BASE CASES
 
-    if pos_row == num_row - 1 and pos_col == num_col - 1:
-        # Alredy Home
+    if pos_row == num_row - 1 and pos_col == num_col - 1: #(set here what home is)
+        # Alredy Home 
         return sol
     elif pos_row >= num_row or pos_col >= num_col:
         # Out of bounds
